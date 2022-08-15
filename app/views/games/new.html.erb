@@ -1,0 +1,20 @@
+
+<div><h1 class="display-4 p-4 fw-bold">New game</h1></div>
+
+<div class="d-flex">
+  <ul class="list-group list-group-horizontal mx-3">
+    <% @letters.each do |letter| %>
+    <li class="list-group-item m-2 bg-primary shadow p-3 rounded">
+      <h4 class="font-weight-bold text-white"><%= letter %></h4>
+    </li>
+    <% end %>
+  </ul>
+</div>
+  <%= 'What is the longest word you can type' %>
+
+<form action="/score" method="post" data-turbo="false">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :available_letters, @letters%>
+  <input type="text" name="word">
+  <input type="submit" value="Play">
+</form>
